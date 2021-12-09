@@ -49,6 +49,8 @@ import { HappinessComponent } from './music/happiness/happiness.component';
 import { JazzComponent } from './music/jazz/jazz.component';
 
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { ListDreamComponent } from './dream/list-dream/list-dream.component';
+import { SaveDreamComponent } from './dream/save-dream/save-dream.component';
 
 
 @NgModule({
@@ -71,6 +73,9 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     GrooveComponent,
     HappinessComponent,
     JazzComponent,
+    ListDreamComponent,
+    SaveDreamComponent,
+    
   ],
   imports: [
     BrowserModule,

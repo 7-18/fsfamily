@@ -1,0 +1,293 @@
+<div class="content-today">
+  <span class="today">Lista de objetivos</span><small class="today-small"> {{ today }} </small>
+</div>
+<div class="container-fluid content mat-elevation-z4">
+  <div class="principal-buttonCSS">
+    <button class="btn btn-primary btn-sm text-white" routerLink="../saveDream">
+      Añadir objetivos
+    </button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="example-container col">
+        <h2 class="text-center">Corto plazo</h2>
+
+        <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="DreamTodo"
+          [cdkDropListConnectedTo]="[inprogressList, doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let item of DreamTodo; let i = index"
+            cdkDrag
+          >
+            <div class="accordion_display">
+              <span class="name">{{ i + 1 }}</span>
+              <div class="accordion_size">
+                <mat-accordion>
+                  <mat-expansion-panel hideToggle="false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span class="name">{{ item.name }}</span>
+                        <span class="spacer"></span>
+                        <button
+                          class="btnDone"
+                          *ngIf="item.DreamStatus == 'done'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnInProgress"
+                          *ngIf="item.DreamStatus == 'in-progress'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnToDo"
+                          *ngIf="item.DreamStatus == 'to-do'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                      {{ item.description }}
+                    </mat-panel-description>
+                    <mat-panel-description>
+                      <img
+                        class="card-img-top image_center"
+                        src="{{ item.imageUrl }}"
+                      />
+                    </mat-panel-description>
+                    <mat-action-row>
+                      <button
+                        class="btnSelectTodo"
+                        mat-button
+                        (click)="updateDream(item, 'to-do')"
+                      >
+                        corto
+                      </button>
+                      <button
+                        class="btnSelectInProgress"
+                        mat-button
+                        (click)="updateDream(item, 'in-progress')"
+                      >
+                        mediano
+                      </button>
+                      <button
+                        class="btnSelectDone"
+                        mat-button
+                        (click)="updateDream(item, 'done')"
+                      >
+                        largo
+                      </button>
+                      <span class="spacer"></span>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+              <mat-icon class="delete" (click)="deleteDream(item)"
+                >delete</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container col">
+        <h2 class="text-center">Mediano plazo</h2>
+
+        <div
+          cdkDropList
+          #inprogressList="cdkDropList"
+          [cdkDropListData]="DreamInprogress"
+          [cdkDropListConnectedTo]="[todoList, doneList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let item of DreamInprogress; let i = index"
+            cdkDrag
+          >
+            <div class="accordion_display">
+              <span class="name">{{ i + 1 }}</span>
+              <div class="accordion_size">
+                <mat-accordion>
+                  <mat-expansion-panel hideToggle="false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span class="name">{{ item.name }}</span>
+                        <span class="spacer"></span>
+                        <button
+                          class="btnDone"
+                          *ngIf="item.DreamStatus == 'done'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnInProgress"
+                          *ngIf="item.DreamStatus == 'in-progress'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnToDo"
+                          *ngIf="item.DreamStatus == 'to-do'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                      {{ item.description }}
+                    </mat-panel-description>
+                    <mat-panel-description>
+                      <img
+                        class="card-img-top image_center"
+                        src="{{ item.imageUrl }}"
+                      />
+                    </mat-panel-description>
+                    <mat-action-row>
+                      <button
+                        class="btnSelectTodo"
+                        mat-button
+                        (click)="updateDream(item, 'to-do')"
+                      >
+                        to-do
+                      </button>
+                      <button
+                        class="btnSelectInProgress"
+                        mat-button
+                        (click)="updateDream(item, 'in-progress')"
+                      >
+                        In-progress
+                      </button>
+                      <button
+                        class="btnSelectDone"
+                        mat-button
+                        (click)="updateDream(item, 'done')"
+                      >
+                        done
+                      </button>
+                      <span class="spacer"></span>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+              <mat-icon class="delete" (click)="deleteDream(item)"
+                >delete</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container col">
+        <h2 class="text-center">Largo plazo</h2>
+
+        <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="DreamDone"
+          [cdkDropListConnectedTo]="[todoList, inprogressList]"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="let item of DreamDone; let i = index"
+            cdkDrag
+          >
+            <div class="accordion_display">
+              <span class="name">{{ i + 1 }}</span>
+              <div class="accordion_size">
+                <mat-accordion>
+                  <mat-expansion-panel hideToggle="false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <span class="name">{{
+                          item.name
+                        }}</span>
+                        <span class="spacer"></span>
+
+                        <button
+                          class="btnDone"
+                          *ngIf="item.DreamStatus == 'done'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnInProgress"
+                          *ngIf="item.DreamStatus == 'in-progress'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                        <button
+                          class="btnToDo"
+                          *ngIf="item.DreamStatus == 'to-do'"
+                          mat-raised-button
+                        >
+                          {{ item.DreamStatus }}
+                        </button>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                      {{ item.description }}
+                    </mat-panel-description>
+                    <mat-panel-description>
+                      <img
+                        class="card-img-top image_center"
+                        src="{{ item.imageUrl }}"
+                      />
+                    </mat-panel-description>
+                    <mat-action-row>
+                      <button
+                        class="btnSelectTodo"
+                        mat-button
+                        (click)="updateDream(item, 'to-do')"
+                      >
+                        to-do
+                      </button>
+                      <button
+                        class="btnSelectInProgress"
+                        mat-button
+                        (click)="updateDream(item, 'in-progress')"
+                      >
+                        In-progress
+                      </button>
+                      <button
+                        class="btnSelectDone"
+                        mat-button
+                        (click)="updateDream(item, 'done')"
+                      >
+                        done
+                      </button>
+                      <span class="spacer"></span>
+                    </mat-action-row>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+              <mat-icon class="delete" (click)="deleteDream(item)"
+                >delete</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

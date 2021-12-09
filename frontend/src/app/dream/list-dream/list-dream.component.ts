@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { DreamService } from 'src/app/services/dream.service';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -16,37 +16,36 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-list-task',
-  templateUrl: './list-task.component.html',
-  styleUrls: ['./list-task.component.css'],
+  selector: 'app-list-dream',
+  templateUrl: './list-dream.component.html',
+  styleUrls: ['./list-dream.component.css'],
 })
-export class ListTaskComponent implements OnInit {
+export class ListDreamComponent implements OnInit {
   opened = false;
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
   today;
 
-  taskData: any;
-  taskTodo: any;
-  taskInprogress: any;
-  taskDone: any;
+  DreamData: any;
+  DreamTodo: any;
+  DreamInprogress: any;
+  DreamDone: any;
   registerData: any;
   message: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-
   constructor(
-    private _boardService: BoardService,
+    private _dreamService: DreamService,
     private _snackBar: MatSnackBar,
     private _router: Router,
     private observer: BreakpointObserver
   ) {
-    this.taskData = {};
-    this.taskTodo = [];
-    this.taskInprogress = [];
-    this.taskDone = [];
+    this.DreamData = {};
+    this.DreamTodo = [];
+    this.DreamInprogress = [];
+    this.DreamDone = [];
     this.registerData = {};
     this.today = moment().locale('es').format('dddd MMM D');
   }
@@ -62,19 +61,20 @@ export class ListTaskComponent implements OnInit {
       }
     });
   }
+
   ngOnInit(): void {
-    this._boardService.listTask().subscribe({
+    this._dreamService.listDream().subscribe({
       next: (v) => {
-        this.taskData = v.taskList;
-        this.taskData.forEach((tk: any) => {
-          if (tk.taskStatus === 'to-do') {
-            this.taskTodo.push(tk);
+        this.DreamData = v.DreamList;
+        this.DreamData.forEach((tk: any) => {
+          if (tk.DreamStatus === 'to-do') {
+            this.DreamTodo.push(tk);
           }
-          if (tk.taskStatus === 'in-progress') {
-            this.taskInprogress.push(tk);
+          if (tk.DreamStatus === 'in-progress') {
+            this.DreamInprogress.push(tk);
           }
-          if (tk.taskStatus === 'done') {
-            this.taskDone.push(tk);
+          if (tk.DreamStatus === 'done') {
+            this.DreamDone.push(tk);
           }
         });
       },
@@ -105,16 +105,16 @@ export class ListTaskComponent implements OnInit {
     }
   }
 
-  updateTask(task: any, status: string) {
-    let tempStatus = task.taskStatus;
-    task.taskStatus = status;
-    this._boardService.updateTask(task).subscribe({
+  updateDream(Dream: any, status: string) {
+    let tempStatus = Dream.DreamStatus;
+    Dream.DreamStatus = status;
+    this._dreamService.updateDream(Dream).subscribe({
       next: (v) => {
-        task.status = status;
+        Dream.status = status;
         this.resetList();
       },
       error: (e) => {
-        task.status = tempStatus;
+        Dream.status = tempStatus;
         this.message = e.error.message;
         this.openSnackBarError();
       },
@@ -123,21 +123,21 @@ export class ListTaskComponent implements OnInit {
   }
 
   resetList() {
-    this.taskTodo = [];
-    this.taskInprogress = [];
-    this.taskDone = [];
-    this._boardService.listTask().subscribe({
+    this.DreamTodo = [];
+    this.DreamInprogress = [];
+    this.DreamDone = [];
+    this._dreamService.listDream().subscribe({
       next: (v) => {
-        this.taskData = v.taskList;
-        this.taskData.forEach((tk: any) => {
-          if (tk.taskStatus === 'to-do') {
-            this.taskTodo.push(tk);
+        this.DreamData = v.DreamList;
+        this.DreamData.forEach((tk: any) => {
+          if (tk.DreamStatus === 'to-do') {
+            this.DreamTodo.push(tk);
           }
-          if (tk.taskStatus === 'in-progress') {
-            this.taskInprogress.push(tk);
+          if (tk.DreamStatus === 'in-progress') {
+            this.DreamInprogress.push(tk);
           }
-          if (tk.taskStatus === 'done') {
-            this.taskDone.push(tk);
+          if (tk.DreamStatus === 'done') {
+            this.DreamDone.push(tk);
           }
         });
       },
@@ -150,29 +150,29 @@ export class ListTaskComponent implements OnInit {
   }
 
   dropUpdate() {
-    this.taskTodo.forEach((tk: any) => {
-      if (tk.taskStatus !== 'to-do') {
-        this.updateTask(tk, 'to-do');
+    this.DreamTodo.forEach((tk: any) => {
+      if (tk.DreamStatus !== 'to-do') {
+        this.updateDream(tk, 'to-do');
       }
     });
-    this.taskInprogress.forEach((tk: any) => {
-      if (tk.taskStatus !== 'in-progress') {
-        this.updateTask(tk, 'in-progress');
+    this.DreamInprogress.forEach((tk: any) => {
+      if (tk.DreamStatus !== 'in-progress') {
+        this.updateDream(tk, 'in-progress');
       }
     });
-    this.taskDone.forEach((tk: any) => {
-      if (tk.taskStatus !== 'done') {
-        this.updateTask(tk, 'done');
+    this.DreamDone.forEach((tk: any) => {
+      if (tk.DreamStatus !== 'done') {
+        this.updateDream(tk, 'done');
       }
     });
   }
 
-  deleteTask(task: any) {
-    this._boardService.deleteTask(task).subscribe({
+  deleteDream(Dream: any) {
+    this._dreamService.deleteDream(Dream).subscribe({
       next: (v) => {
-        let index = this.taskData.indexOf(task);
+        let index = this.DreamData.indexOf(Dream);
         if (index > -1) {
-          this.taskData.splice(index, 1);
+          this.DreamData.splice(index, 1);
           this.message = v.message;
           this.openSnackBarSuccesfull();
           location.reload();
@@ -204,15 +204,15 @@ export class ListTaskComponent implements OnInit {
     });
   }
 
-  saveTask() {
+  saveDream() {
     if (!this.registerData.name || !this.registerData.description) {
       this.message = 'Error: datos incompletos';
       this.openSnackBarError();
     } else {
-      this._boardService.saveTask(this.registerData).subscribe(
+      this._dreamService.saveDream(this.registerData).subscribe(
         (res) => {
-          this._router.navigate(['/listTask']);
-          this.message = 'Tarea creada';
+          this._router.navigate(['/listDream']);
+          this.message = 'Objetivo creado';
           this.openSnackBarSuccesfull();
           this.registerData = {};
           location.reload();

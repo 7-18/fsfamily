@@ -1,14 +1,14 @@
 <div class="bgComponent">
   <div class="form">
     <mat-card class="card">
-      <mat-card-title>Register</mat-card-title>
+      <mat-card-title>Crea tu cuenta</mat-card-title>
       <mat-card-content>
         <div class="container">
           <mat-form-field>
             <input
               [(ngModel)]="registerData.name"
               matInput
-              placeholder="Name and lastname"
+              placeholder="Nombre y apellido"
               required
             />
           </mat-form-field>
@@ -17,7 +17,7 @@
               [(ngModel)]="registerData.email"
               type="email"
               matInput
-              placeholder="Email"
+              placeholder="Correo electrónico"
               required
             />
           </mat-form-field>
@@ -26,7 +26,7 @@
               [(ngModel)]="registerData.password"
               type="password"
               matInput
-              placeholder="Password"
+              placeholder="Contraseña"
               required
             />
           </mat-form-field>
@@ -34,12 +34,12 @@
       </mat-card-content>
       <mat-card-actions>
         <button (click)="registerUser()" class="button" mat-raised-button>
-          Create account
+          Registrarte
         </button>
       </mat-card-actions>
       <p>
-        Already have an account?
-        <a routerLink="/login"> Login</a>
+        ¿Ya tienes cuenta?
+        <a routerLink="/login">Iniciar sesión</a>
       </p>
     </mat-card>
   </div>

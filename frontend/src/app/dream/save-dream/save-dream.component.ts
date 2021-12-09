@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from '../../services/board.service';
+import { DreamService } from 'src/app/services/dream.service';
 import { Router } from '@angular/router';
 import {
   MatSnackBar,
@@ -7,13 +7,12 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
-
 @Component({
-  selector: 'app-save-task',
-  templateUrl: './save-task.component.html',
-  styleUrls: ['./save-task.component.css'],
+  selector: 'app-save-dream',
+  templateUrl: './save-dream.component.html',
+  styleUrls: ['./save-dream.component.css'],
 })
-export class SaveTaskComponent implements OnInit {
+export class SaveDreamComponent implements OnInit {
   registerData: any;
   selectedFile: any;
   message: string = '';
@@ -24,7 +23,7 @@ export class SaveTaskComponent implements OnInit {
   buttonDisabled: boolean = false;
 
   constructor(
-    private _boardService: BoardService,
+    private _dreamService: DreamService,
     private _router: Router,
     private _snackBar: MatSnackBar
   ) {
@@ -33,20 +32,20 @@ export class SaveTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  
-  cancelTask() {
-    this._router.navigate(['/listTask']);
+
+  cancelDream() {
+    this._router.navigate(['/listDream']);
   }
 
-  saveTask() {
+  saveDream() {
     if (!this.registerData.name || !this.registerData.description) {
       this.message = 'Error: datos incompletos';
       this.openSnackBarError();
     } else {
-      this._boardService.saveTask(this.registerData).subscribe(
+      this._dreamService.saveDream(this.registerData).subscribe(
         (res) => {
-          this._router.navigate(['/listTask']);
-          this.message = 'Tarea creada';
+          this._router.navigate(['/listDream']);
+          this.message = 'Objetivo creado';
           this.openSnackBarSuccesfull();
           this.registerData = {};
         },
@@ -62,7 +61,7 @@ export class SaveTaskComponent implements OnInit {
     this.selectedFile = <File>event.target.files[0];
   }
 
-  saveTaskImg() {
+  saveDreamImg() {
     if (!this.registerData.name || !this.registerData.description) {
       this.message = 'Error: datos incompletos';
       this.openSnackBarError();
@@ -75,10 +74,10 @@ export class SaveTaskComponent implements OnInit {
       data.append('name', this.registerData.name);
       data.append('description', this.registerData.description);
 
-      this._boardService.saveTaskImg(data).subscribe({
+      this._dreamService.saveDreamImg(data).subscribe({
         next: (v) => {
-          this._router.navigate(['/listTask']);
-          this.message = 'Tarea creada';
+          this._router.navigate(['/listDream']);
+          this.message = 'Objetivo creado';
           this.openSnackBarSuccesfull();
           this.registerData = {};
         },

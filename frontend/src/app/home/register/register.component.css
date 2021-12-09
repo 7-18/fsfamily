@@ -30,13 +30,23 @@
 
 mat-card-title {
   text-align: center;
+	font-size: 300%;
+	font-weight: 200;
+	color: #002b5c;
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+  padding-bottom: 50px;
 }
 
+.button {
+  background-color: #002b5c;
+}
 .button:hover {
-  background-color: #da8f02;
+  background-color: #ed7b32;
 }
 
 p a {
-  color: #ffa500;
+  color: #ed7b32;
   
   }

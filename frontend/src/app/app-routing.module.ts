@@ -17,8 +17,8 @@ import { ElectronicComponent } from './music/electronic/electronic.component';
 import { GrooveComponent } from './music/groove/groove.component';
 import { HappinessComponent } from './music/happiness/happiness.component';
 import { JazzComponent } from './music/jazz/jazz.component';
-
-import { HomeComponent } from 'memory-game-master/src/app/components/home/home.component';
+import { ListDreamComponent } from './dream/list-dream/list-dream.component';
+import { SaveDreamComponent } from './dream/save-dream/save-dream.component';
 
 const routes: Routes = [
   {
@@ -100,20 +100,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'homeGame',
-    component: HomeComponent,
+    path: 'listDream',
+    component: ListDreamComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: '**',
-    pathMatch: 'full',
-    redirectTo: 'homeGame'
+    path: 'saveDream',
+    component: SaveDreamComponent,
+    canActivate: [AuthGuard],
   },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'homeGame'
-  }
 ];
 
 @NgModule({

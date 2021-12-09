@@ -26,7 +26,10 @@
     aria-label="Toggle navigation"
     *ngIf="_userService.loggedIn() && _userService.isAdmin()"
   >
-<i class="fas fa-users-cog" *ngIf="_userService.loggedIn() && _userService.isAdmin()"></i>
+    <i
+      class="fas fa-users-cog"
+      *ngIf="_userService.loggedIn() && _userService.isAdmin()"
+    ></i>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav2Dropdown">
     <span class="headerSpacer"></span>
@@ -46,7 +49,7 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2MenuLink">
           <li>
             <a class="dropdown-item" *ngIf="_userService.loggedIn()"
-              >Calendario</a
+              >Crear objetivo</a
             >
           </li>
           <li>
@@ -54,6 +57,14 @@
               class="dropdown-item"
               *ngIf="_userService.loggedIn()"
               routerLink="listTask"
+              >Lista de objetivos</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              *ngIf="_userService.loggedIn()"
+              routerLink="saveTask"
               >Lista de tareas</a
             >
           </li>
@@ -88,7 +99,9 @@
               class="dropdown-menu"
               aria-labelledby="navbarDarkDropdownMenuLink"
             >
-              <li><a class="dropdown-item" routerLink="listUser">Usuarios</a></li>
+              <li>
+                <a class="dropdown-item" routerLink="listUser">Usuarios</a>
+              </li>
               <li><a class="dropdown-item" routerLink="listRole">Roles</a></li>
             </ul>
           </li>
@@ -134,19 +147,26 @@
   >
     <button mat-button class="menu-button" routerLink="../listTask">
       <mat-icon>event_available</mat-icon>
-      <span>Today</span>
+      <span>Agenda</span>
     </button>
-    <button mat-button class="menu-button">
+    <!-- <button mat-button class="menu-button">
       <mat-icon>event_note</mat-icon>
-      <span>Calendar</span>
-    </button>
+      <span>Calendario</span>
+    </button> -->
     <button mat-button class="menu-button" routerLink="../saveTask">
       <mat-icon>create</mat-icon>
-      <span>Create task</span>
+      <span>Crear tareas</span>
     </button>
-
+    <button mat-button class="menu-button" routerLink="../saveDream">
+      <mat-icon>cloud</mat-icon>
+      <span>Crear objetivo</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="../listDream">
+      <mat-icon>stars</mat-icon>
+      <span>Lista de objetivos</span>
+    </button>
     <mat-divider></mat-divider>
-    <mat-accordion>
+    <!-- <mat-accordion>
       <mat-expansion-panel hideToggle="false">
         <mat-expansion-panel-header class="change-accordion">
           <mat-panel-title>
@@ -170,7 +190,7 @@
         </mat-panel-description>
       </mat-expansion-panel>
     </mat-accordion>
-    <mat-divider></mat-divider>
+    <mat-divider></mat-divider> -->
 
     <button mat-button class="menu-button">
       <mat-icon>videogame_asset</mat-icon>

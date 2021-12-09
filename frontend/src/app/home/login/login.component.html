@@ -36,7 +36,7 @@
   <div class="card-body">
     <div class="form">
       <mat-card class="card cardlogin">
-        <mat-card-title class="titlelogin">Login</mat-card-title>
+        <mat-card-title class="titlelogin">Iniciar sesión</mat-card-title>
         <mat-card-content>
           <div class="container">
             <mat-form-field>
@@ -44,7 +44,7 @@
                 [(ngModel)]="loginData.email"
                 type="email"
                 matInput
-                placeholder="Email"
+                placeholder="Correo electrónico"
                 required
               />
             </mat-form-field>
@@ -53,7 +53,7 @@
                 [(ngModel)]="loginData.password"
                 type="password"
                 matInput
-                placeholder="Password"
+                placeholder="Contraseña"
                 required
               />
             </mat-form-field>
@@ -61,12 +61,12 @@
         </mat-card-content>
         <mat-card-actions>
           <button (click)="login()" class="button" mat-raised-button>
-            Access
+            Ingresar
           </button>
         </mat-card-actions>
         <p>
-          Don't have an account?
-          <a routerLink="/signUp">Sign up</a>
+          ¿No tienes cuenta?
+          <a routerLink="/signUp">Regístrate</a>
         </p>
       </mat-card>
     </div>

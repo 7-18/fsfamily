@@ -25,3 +25,7 @@ button:hover > i {
     position: relative;
   }
 }
+
+a {
+  text-decoration: none;
+}
