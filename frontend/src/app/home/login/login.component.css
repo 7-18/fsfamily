@@ -86,6 +86,30 @@ img {
   padding-bottom: 5rem;
 }
 
-app-footer {
-  height: 2px;
+@media (max-width: 992px) {
+  app-footer {
+    display: none;
+  }
+}
+
+
+@media (min-width: 2500px) {
+  app-footer {
+    display: none;
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px) {
+  app-footer {
+    display: none;
+  }
+}
+
+.button:hover {
+  background-color: #da8f02;
+}
+
+p a {
+color: #ffa500;
+
 }

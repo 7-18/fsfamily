@@ -46,7 +46,7 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2MenuLink">
           <li>
             <a class="dropdown-item" *ngIf="_userService.loggedIn()"
-              >Calendar</a
+              >Calendario</a
             >
           </li>
           <li>
@@ -54,7 +54,7 @@
               class="dropdown-item"
               *ngIf="_userService.loggedIn()"
               routerLink="listTask"
-              >List task</a
+              >Lista de tareas</a
             >
           </li>
           <li>
@@ -62,7 +62,7 @@
               class="dropdown-item"
               *ngIf="_userService.loggedIn()"
               routerLink="saveTask"
-              >Create task</a
+              >Crear tarea</a
             >
           </li>
         </ul>
@@ -88,7 +88,7 @@
               class="dropdown-menu"
               aria-labelledby="navbarDarkDropdownMenuLink"
             >
-              <li><a class="dropdown-item" routerLink="listUser">Users</a></li>
+              <li><a class="dropdown-item" routerLink="listUser">Usuarios</a></li>
               <li><a class="dropdown-item" routerLink="listRole">Roles</a></li>
             </ul>
           </li>
@@ -102,7 +102,7 @@
       *ngIf="!_userService.loggedIn()"
       mat-button
       routerLink="signUp"
-      >Sign Up</a
+      >Regístrate</a
     >
   </li>
   <li>
@@ -111,7 +111,7 @@
       *ngIf="!_userService.loggedIn()"
       mat-button
       routerLink="login"
-      >Login</a
+      >Iniciar sesión</a
     >
   </li>
   <li>
@@ -174,7 +174,7 @@
 
     <button mat-button class="menu-button">
       <mat-icon>videogame_asset</mat-icon>
-      <span>Game</span>
+      <span routerLink="../homeGame">Game</span>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>

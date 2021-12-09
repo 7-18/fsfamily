@@ -31,3 +31,12 @@
 mat-card-title {
   text-align: center;
 }
+
+.button:hover {
+  background-color: #da8f02;
+}
+
+p a {
+  color: #ffa500;
+  
+  }

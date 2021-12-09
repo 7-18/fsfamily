@@ -1,20 +1,37 @@
 <div class="card-body card-group">
-  <mat-card class="example-card card2 ">
+  <mat-card class="example-card card2">
     <div class="card card1">
       <mat-card-title class="title1">OrganizApp</mat-card-title>
-      <mat-card-subtitle class="text-center pt-2 mt-2">Te ayuda a cumplir tus metas
+      <mat-card-subtitle class="text-center pt-2 mt-2"
+        >Te ayuda a cumplir tus metas
       </mat-card-subtitle>
-      <img width="90%" src="../../../assets/fondo.jpg" alt="Card image">
+      <img width="90%" src="../../../assets/fondo.jpg" alt="Card image" />
 
-      <mat-carousel class="carousel" timings="250ms ease-in" [autoplay]="true" color="primary" maxWidth="auto"
-        [loop]="true" [hideArrows]="false" [hideIndicators]="true" [useKeyboard]="true" [useMouseWheel]="false"
-        mat-button="false" orientation="ltr">
-        <mat-carousel-slide class="indicators" #matCarouselSlide *ngFor="let slide of slides; let i = index"
-          [image]="slide.image" color-indicators=#ed7b32; [hideOverlay]="true"></mat-carousel-slide>
+      <mat-carousel
+        class="carousel"
+        timings="250ms ease-in"
+        [autoplay]="true"
+        color="primary"
+        maxWidth="auto"
+        [loop]="true"
+        [hideArrows]="false"
+        [hideIndicators]="true"
+        [useKeyboard]="true"
+        [useMouseWheel]="false"
+        mat-button="false"
+        orientation="ltr"
+      >
+        <mat-carousel-slide
+          class="indicators"
+          #matCarouselSlide
+          *ngFor="let slide of slides; let i = index"
+          [image]="slide.image"
+          color-indicators="#ed7b32;"
+          [hideOverlay]="true"
+        ></mat-carousel-slide>
       </mat-carousel>
     </div>
   </mat-card>
-
 
   <div class="card-body">
     <div class="form">
@@ -23,16 +40,34 @@
         <mat-card-content>
           <div class="container">
             <mat-form-field>
-              <input [(ngModel)]="loginData.email" type="email" matInput placeholder="Email" required />
+              <input
+                [(ngModel)]="loginData.email"
+                type="email"
+                matInput
+                placeholder="Email"
+                required
+              />
             </mat-form-field>
             <mat-form-field>
-              <input [(ngModel)]="loginData.password" type="password" matInput placeholder="Password" required />
+              <input
+                [(ngModel)]="loginData.password"
+                type="password"
+                matInput
+                placeholder="Password"
+                required
+              />
             </mat-form-field>
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button (click)="login()" class="button" mat-raised-button>Go!!</button>
+          <button (click)="login()" class="button" mat-raised-button>
+            Access
+          </button>
         </mat-card-actions>
+        <p>
+          Don't have an account?
+          <a routerLink="/signUp">Sign up</a>
+        </p>
       </mat-card>
     </div>
   </div>

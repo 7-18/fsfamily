@@ -1,23 +1,23 @@
 <div class="bgComponent">
-  <div class="title-principal-mobile"><h1>Create task</h1></div>
+  <div class="title-principal-mobile"><h1>Añadir tarea</h1></div>
   <div class="form">
     <mat-card class="card">
       <mat-card-content>
-        <div class="title-principal"><h1>Create task</h1></div>
+        <div class="title-principal"><h1>Añadir tarea</h1></div>
         <div class="container">
           <mat-form-field>
-            <mat-label>Task name</mat-label>
+            <mat-label>Nombre de tarea</mat-label>
             <input #inputName
             type="text"
               [(ngModel)]="registerData.name"
               matInput
-              placeholder="Ex. Learn a book"
+              placeholder="Por ej. Pasear al perro"
               required
               minlength="5"
               (keyup.enter)="saveTaskImg()"
             />
             <mat-error mat-error *ngIf="registerData.name || inputName.required">
-              Task name is <strong>required</strong> (min 5 characters)
+              El nombre de la tarea es <strong>obligatorio</strong> (min. 5 caracteres)
             </mat-error>
           </mat-form-field>
           <mat-form-field>
@@ -25,11 +25,11 @@
               #inputDescription
               [(ngModel)]="registerData.description"
               matInput
-              placeholder="Description"
+              placeholder="Descripción"
               (keyup.enter)="saveTaskImg()"
             />
             <mat-error mat-error *ngIf="registerData.description || inputDescription.required">
-              Description is <strong>required</strong>
+              La descripción es <strong>obligatoria</strong>
             </mat-error>
           </mat-form-field>
           <input type="file" (change)="uploadImg($event)" />
@@ -40,10 +40,10 @@
             Create
           </button> -->
           <button class="button" mat-raised-button (click)="saveTaskImg()" [disabled]="!registerData.name || !registerData.description">
-          Create
+          Crear
         </button>
         <button (click)="cancelTask()" class="button-2" mat-raised-button>
-          Cancel
+          Cancelar
         </button>
       </mat-card-actions>
     </mat-card>

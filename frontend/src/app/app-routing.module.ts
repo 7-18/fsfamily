@@ -18,7 +18,7 @@ import { GrooveComponent } from './music/groove/groove.component';
 import { HappinessComponent } from './music/happiness/happiness.component';
 import { JazzComponent } from './music/jazz/jazz.component';
 
-import { HomeComponent } from '../../../memory-game-master/src/app/components/home/home.component';
+import { HomeComponent } from 'memory-game-master/src/app/components/home/home.component';
 
 const routes: Routes = [
   {
@@ -100,18 +100,19 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'homeGame',
+    component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'homeGame'
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'homeGame'
   }
 ];
 
