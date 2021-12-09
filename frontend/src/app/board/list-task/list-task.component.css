@@ -1,0 +1,247 @@
+.content {
+  padding-bottom: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.accordion_display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accordion_size {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+  cursor: pointer;
+  transform: scale(0.8);
+  transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98),
+    box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+}
+
+.accordion_size:hover {
+  transform: scale(0.9);
+  box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
+}
+.spacer {
+  flex: 1 0 auto;
+}
+
+.btnDone {
+  background-color: #3cb44b;
+  color: #ffffff;
+}
+
+.btnInProgress {
+  background-color: #f58231;
+  color: #ffffff;
+}
+
+.btnToDo {
+  background-color: #e6194b;
+  color: #ffffff;
+}
+
+.btnSelectDone {
+  color: #3cb44b;
+}
+
+.btnSelectInProgress {
+  color: #f58231;
+}
+
+.btnSelectTodo {
+  color: #e6194b;
+}
+
+.mat-icon {
+  padding-right: 15px;
+}
+
+.delete {
+  color: #002b5c;
+}
+
+.mat-icon:hover {
+  color: #ff0000;
+  cursor: pointer;
+  padding-right: 15px;
+}
+
+.image_center {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 450px;
+}
+
+.example-container {
+  max-width: 100%;
+  width: 250px;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  background-size: cover;
+  background-clip: content-box;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  position: relative;
+  margin: auto auto auto 100px;
+  top: 30px;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+  color: #000000;
+}
+
+.example-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 50px solid transparent;
+  border-bottom: 50px solid #ed7b32;
+  bottom: -60px;
+  right: -65px;
+  box-shadow: 0px 7px 6px -9px black;
+  transform: rotate(135deg);
+}
+
+.example-container::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 50px solid transparent;
+  border-top: 50px solid #ed7b32;
+  top: -60px;
+  left: -65px;
+  box-shadow: 0px -7px 6px -9px black;
+  transform: rotate(135deg);
+}
+
+.example-list {
+  border: solid 1px transparent;
+  min-height: 60px;
+  background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  padding: 10px 30px 10px 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98),
+    box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+  background-color: #fff;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.name {
+  color: #000000;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.64px;
+  margin: auto;
+}
+
+.principal-buttonCSS {
+  display: flex;
+  justify-content: center;
+}
+
+.principal-buttonCSS > button {
+  display: block;
+  font-size: 13px;
+  line-height: 17px;
+  margin: 20px auto 0;
+  padding: 6px 50px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #002b5c;
+}
+
+.principal-buttonCSS > button:hover,
+button:active {
+  background-color: #002853;
+  color: #d3d3d3;
+}
+
+.content-today {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color .3s;
+  padding-top: 35px;
+}
+
+.today {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  color: #002b5c;
+}
+
+.today-small {
+  color: #808080;
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  padding-top: 4px;
+}
+
+@media (max-width: 992px) {
+  app-footer {
+    display: none;
+  }
+}
+
+
+@media (min-width: 2500px) {
+  app-footer {
+    display: none;
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px) {
+  app-footer {
+    display: none;
+  }
+}
+
+mat-action-row button.mat-button:active {
+  background-color: transparent;
+}

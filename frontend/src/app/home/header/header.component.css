@@ -1,0 +1,169 @@
+.headerSpacer {
+  flex: 1 1 auto;
+}
+
+a.navbar-brand:hover {
+  background-color: transparent;
+}
+
+.title-logo:active {
+  background-color: transparent;
+}
+
+button.navbar-toggler:hover{
+  background-color: transparent;
+}
+
+.title-logo {
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+i.fa-plus {
+  font-size: 16.5px;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-link:focus {
+  color: #ffffff;
+}
+
+ul {
+  margin: auto;
+}
+
+li {
+  list-style: none;
+}
+
+.fa-sign-out-alt {
+  font-size: 20px;
+}
+
+a:hover,
+a:active {
+  color: #d3d3d3;
+  background-color: rgba(255, 255, 255, 0.133);
+}
+
+.title-logo {
+  border-right: 1px solid rgb(255, 255, 255);
+  padding-right: 68px;
+}
+
+div.toggler-principal .navbar-toggler {
+  display: inline-block;
+  outline: none;
+}
+
+.dropdown-menu {
+  background-color: #ed7b32;
+}
+
+.dropdown-item:hover {
+  background-color: #ed7b32;
+  color: #d3d3d3;
+}
+
+.navbar {
+  background-color: #ed7b32;
+  padding-left: 4px;
+  padding-right: 42px;
+}
+
+.navbar-toggler {
+  background-color: #ed7b32;
+}
+
+.admin {
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .title-logo {
+    border-right: none;
+    margin: 0;
+  }
+
+  .schedule {
+    display: none;
+  }
+
+  i.fa-plus {
+    display: none;
+  }
+
+  .admin {
+    display: initial;
+  }
+  
+  .navbar {
+    padding-right: 0%;
+    flex-wrap: nowrap;
+  }
+
+}
+
+mat-sidenav {
+  width: 215px;
+  border-right: none;
+  background-color: #ed7b32;
+  color: #ffffff;
+  padding: 16px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+mat-sidenav-container {
+  height: calc(92.1vh);
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+mat-icon:hover,
+mat-icon:active {
+  color: #d3d3d3;
+}
+
+button:hover,
+button:active > span:hover,
+span:active {
+  color: #d3d3d3;
+  background-color: rgba(255, 255, 255, 0.133);
+}
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+mat-accordion, mat-expansion-panel, mat-expansion-panel-header, mat-panel-title, mat-panel-description {
+  background-color: transparent!important;
+  border: transparent;
+  padding: 0;
+  margin: 0;
+  color: #fff!important;
+}
+
+::ng-deep .change-accordion > .mat-expansion-indicator:after {
+  color: white;
+}
+
+::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}

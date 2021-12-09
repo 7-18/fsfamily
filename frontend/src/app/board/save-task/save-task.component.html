@@ -1,0 +1,52 @@
+<div class="bgComponent">
+  <div class="title-principal-mobile"><h1>Create task</h1></div>
+  <div class="form">
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="title-principal"><h1>Create task</h1></div>
+        <div class="container">
+          <mat-form-field>
+            <mat-label>Task name</mat-label>
+            <input #inputName
+            type="text"
+              [(ngModel)]="registerData.name"
+              matInput
+              placeholder="Ex. Learn a book"
+              required
+              minlength="5"
+              (keyup.enter)="saveTaskImg()"
+            />
+            <mat-error mat-error *ngIf="registerData.name || inputName.required">
+              Task name is <strong>required</strong> (min 5 characters)
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              #inputDescription
+              [(ngModel)]="registerData.description"
+              matInput
+              placeholder="Description"
+              (keyup.enter)="saveTaskImg()"
+            />
+            <mat-error mat-error *ngIf="registerData.description || inputDescription.required">
+              Description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <input type="file" (change)="uploadImg($event)" />
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="container-fluid d-inline-flex justify-content-center ms-sm-auto ps-auto ps-sm-0">
+        <!-- <button (click)="saveTask()" class="button" mat-raised-button>
+            Create
+          </button> -->
+          <button class="button" mat-raised-button (click)="saveTaskImg()" [disabled]="!registerData.name || !registerData.description">
+          Create
+        </button>
+        <button (click)="cancelTask()" class="button-2" mat-raised-button>
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<app-footer></app-footer>
