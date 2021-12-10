@@ -14,8 +14,16 @@ button:hover {
   background-color: #002b5c;
 }
 
-button:hover > i {
+button:hover > i{
   color: #d3d3d3;
+}
+
+button:hover > a {
+  color: #d3d3d3;
+}
+
+button:active {
+  border-radius: none;
 }
 
 @media (max-width: 992px) {

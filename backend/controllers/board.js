@@ -5,25 +5,25 @@ import moment from "moment";
 
 const saveTask = async (req, res) => {
   if (!req.body.name || !req.body.description)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const boardSchema = new board({
     userId: req.user._id,
     name: req.body.name,
     description: req.body.description,
-    taskStatus: "to-do",
+    taskStatus: "por hacer",
     imageUrl: "",
   });
 
   const result = await boardSchema.save();
   return !result
-    ? res.status(400).send({ message: "Error registering task" })
+    ? res.status(400).send({ message: "Error registrando tarea" })
     : res.status(200).send({ result });
 };
 
 const saveTaskImg = async (req, res) => {
   if (!req.body.name || !req.body.description)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   let imageUrl = "";
   if (Object.keys(req.files).length === 0) {
@@ -50,34 +50,34 @@ const saveTaskImg = async (req, res) => {
     userId: req.user._id,
     name: req.body.name,
     description: req.body.description,
-    taskStatus: "to-do",
+    taskStatus: "por hacer",
     imageUrl: imageUrl,
   });
 
   const result = await boardSchema.save();
   if (!result)
-    return res.status(400).send({ message: "Error registering task" });
+    return res.status(400).send({ message: "Error registrando tarea" });
   return res.status(200).send({ result });
 };
 
 const listTask = async (req, res) => {
   const taskList = await board.find({ userId: req.user._id });
   return taskList.length === 0
-    ? res.status(400).send({ message: "You have no assigned tasks" })
+    ? res.status(400).send({ message: "Aún no has creado tareas" })
     : res.status(200).send({ taskList });
 };
 
 const updateTask = async (req, res) => {
   if (!req.body._id || !req.body.taskStatus)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const taskUpdate = await board.findByIdAndUpdate(req.body._id, {
     taskStatus: req.body.taskStatus,
   });
 
   return !taskUpdate
-    ? res.status(400).send({ message: "Task not found" })
-    : res.status(200).send({ message: "Task updated" });
+    ? res.status(400).send({ message: "Tarea no encontrada" })
+    : res.status(200).send({ message: "Tarea actualizada" });
 };
 
 const deleteTask = async (req, res) => {
@@ -88,13 +88,13 @@ const deleteTask = async (req, res) => {
   let serverImg = "./uploads/" + taskImg;
 
   const taskDelete = await board.findByIdAndDelete({ _id: req.params["_id"] });
-  if (!taskDelete) return res.status(400).send({ message: "Task not found" });
+  if (!taskDelete) return res.status(400).send({ message: "Tarea no encontrada" });
 
   try {
     if (taskImg) fs.unlinkSync(serverImg);
-    return res.status(200).send({ message: "Task deleted" });
+    return res.status(200).send({ message: "Tarea eliminada" });
   } catch (e) {
-    console.log("Image no found in server");
+    console.log("Imagen no encontrada");
   }
 };
 

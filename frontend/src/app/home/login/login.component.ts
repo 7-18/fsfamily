@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-
+  hide = true;
   slides = [
     {'image': '../../../assets/1.png'},
     {'image': '../../../assets/2.png'},
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (!this.loginData.email || !this.loginData.password) {
-      this.message = 'Failed process: Imcomplete data';
+      this.message = 'Error al iniciar sesión';
       this.openSnackBarError();
       this.loginData = {};
     } else {

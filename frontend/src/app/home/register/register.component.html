@@ -5,19 +5,21 @@
       <mat-card-content>
         <div class="container">
           <mat-form-field>
+            <mat-label>Nombre y apellido</mat-label>
             <input
               [(ngModel)]="registerData.name"
               matInput
-              placeholder="Nombre y apellido"
+              placeholder="Por ej. Chucho Sánchez"
               required
             />
           </mat-form-field>
           <mat-form-field>
+            <mat-label>Correo electrónico</mat-label>
             <input
               [(ngModel)]="registerData.email"
               type="email"
               matInput
-              placeholder="Correo electrónico"
+              placeholder="ejemplo@gmail.com"
               required
             />
           </mat-form-field>
@@ -26,14 +28,18 @@
               [(ngModel)]="registerData.password"
               type="password"
               matInput
-              placeholder="Contraseña"
+              placeholder="Contraseña nueva"
               required
+              (keyup.enter)="registerUser()"
+                [type]="hide ? 'password' : 'text'"
+                #inputPass
             />
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="registerUser()" class="button" mat-raised-button>
+        <button (click)="registerUser()" class="button" mat-raised-button [disabled]="!registerData.name || !registerData.email || !registerData.password">
           Registrarte
         </button>
       </mat-card-actions>
@@ -44,3 +50,5 @@
     </mat-card>
   </div>
 </div>
+
+

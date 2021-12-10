@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
 
+  hide = true;
+  
   constructor(
     private _userService: UserService,
     private _router: Router,

@@ -6,16 +6,16 @@ import moment from "moment";
 
 const registerUser = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const existingUser = await user.findOne({ email: req.body.email });
   if (existingUser)
-    return res.status(400).send({ message: "The user is already registered" });
+    return res.status(400).send({ message: "El usuario ya está registrado" });
 
   const passHash = await bcrypt.hash(req.body.password, 10);
 
   const roleId = await role.findOne({ name: "user" });
-  if (!role) return res.status(400).send({ message: "No role was assigned" });
+  if (!role) return res.status(400).send({ message: "No fue asignado un rol" });
 
   const userRegister = new user({
     name: req.body.name,
@@ -40,7 +40,7 @@ const registerUser = async (req, res) => {
       ),
     });
   } catch (e) {
-    return res.status(400).send({ message: "Register error" });
+    return res.status(400).send({ message: "Error al registrar" });
   }
 };
 
@@ -51,11 +51,11 @@ const registerAdminUser = async (req, res) => {
     !req.body.password ||
     !req.body.roleId
   )
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const existingUser = await user.findOne({ email: req.body.email });
   if (existingUser)
-    return res.status(400).send({ message: "The user is already registered" });
+    return res.status(400).send({ message: "El usuario ya está registrado" });
 
   const passHash = await bcrypt.hash(req.body.password, 10);
 
@@ -69,7 +69,7 @@ const registerAdminUser = async (req, res) => {
 
   const result = await userRegister.save();
   return !result
-    ? res.status(400).send({ message: "Failed to register user" })
+    ? res.status(400).send({ message: "Error al registrar" })
     : res.status(200).send({ result });
 };
 
@@ -84,7 +84,7 @@ const listUsers = async (req, res) => {
     .populate("roleId")
     .exec();
   return userList.length === 0
-    ? res.status(400).send({ message: "Empty users list" })
+    ? res.status(400).send({ message: "La lista de usuarios está vacía" })
     : res.status(200).send({ userList });
 };
 
@@ -96,7 +96,7 @@ const listAllUser = async (req, res) => {
     .populate("roleId")
     .exec();
   return userList.length === 0
-    ? res.status(400).send({ message: "Empty users list" })
+    ? res.status(400).send({ message: "La lista de usuarios está vacía" })
     : res.status(200).send({ userList });
 };
 
@@ -106,7 +106,7 @@ const findUser = async (req, res) => {
     .populate("roleId")
     .exec();
   return !userfind
-    ? res.status(400).send({ message: "No search results" })
+    ? res.status(400).send({ message: "No se encontraron resultados" })
     : res.status(200).send({ userfind });
 };
 
@@ -116,7 +116,7 @@ const getUserRole = async (req, res) => {
     .populate("roleId")
     .exec();
   if (userRole.length === 0)
-    return res.status(400).send({ message: "No search results" });
+    return res.status(400).send({ message: "No se encontraron resultados" });
 
   userRole = userRole.roleId.name;
   return res.status(200).send({ userRole });
@@ -124,13 +124,13 @@ const getUserRole = async (req, res) => {
 
 const updateUser = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.roleId)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const searchUser = await user.findById({ _id: req.body._id });
   if (req.body.email !== searchUser.email)
     return res
       .status(400)
-      .send({ message: "The email should never be changed" });
+      .send({ message: "El email no puede ser cambiado" });
 
   let pass = "";
 
@@ -155,7 +155,7 @@ const updateUser = async (req, res) => {
     roleId: req.body.roleId,
   });
   if (existingUser)
-    return res.status(400).send({ message: "you didn't make any changes" });
+    return res.status(400).send({ message: "No has realizado ningún cambio" });
 
   const userUpdate = await user.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
@@ -165,32 +165,32 @@ const updateUser = async (req, res) => {
   });
 
   return !userUpdate
-    ? res.status(400).send({ message: "Error editing user" })
-    : res.status(200).send({ message: "User updated" });
+    ? res.status(400).send({ message: "Error editando usuario" })
+    : res.status(200).send({ message: "Usuario actualizado" });
 };
 
 const deleteUser = async (req, res) => {
-  if (!req.body._id) return res.status(400).send("Incomplete data");
+  if (!req.body._id) return res.status(400).send("Datos incompletos");
 
   const userDelete = await user.findByIdAndUpdate(req.body._id, {
     dbStatus: false,
   });
   return !userDelete
-    ? res.status(400).send({ message: "User no found" })
-    : res.status(200).send({ message: "User deleted" });
+    ? res.status(400).send({ message: "Usuario no encontrado" })
+    : res.status(200).send({ message: "Usuario no encontrado" });
 };
 
 const login = async (req, res) => {
   if (!req.body.email || !req.body.password)
-    return res.status(400).send({ message: "Incomplete data" });
+    return res.status(400).send({ message: "Datos incompletos" });
 
   const userLogin = await user.findOne({ email: req.body.email });
   if (!userLogin)
-    return res.status(400).send({ message: "Wrong email or password" });
+    return res.status(400).send({ message: "Correo o contraseña erróneos" });
 
   const hash = await bcrypt.compare(req.body.password, userLogin.password);
   if (!hash)
-    return res.status(400).send({ message: "Wrong email or password" });
+    return res.status(400).send({ message: "Correo o contraseña erróneos" });
 
   try {
     return res.status(200).json({
@@ -205,7 +205,7 @@ const login = async (req, res) => {
       ),
     });
   } catch (e) {
-    return res.status(400).send({ message: "Login error" });
+    return res.status(400).send({ message: "Error al iniciar sesión" });
   }
 };
 

@@ -129,3 +129,11 @@ p a {
 color: #ed7b32;
 
 }
+
+button[disabled] {
+  cursor: not-allowed;
+}
+
+button[disabled]:hover {
+  background-color: #dddddd;
+}

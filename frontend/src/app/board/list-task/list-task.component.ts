@@ -67,13 +67,13 @@ export class ListTaskComponent implements OnInit {
       next: (v) => {
         this.taskData = v.taskList;
         this.taskData.forEach((tk: any) => {
-          if (tk.taskStatus === 'to-do') {
+          if (tk.taskStatus === 'por hacer') {
             this.taskTodo.push(tk);
           }
-          if (tk.taskStatus === 'in-progress') {
+          if (tk.taskStatus === 'en progreso') {
             this.taskInprogress.push(tk);
           }
-          if (tk.taskStatus === 'done') {
+          if (tk.taskStatus === 'hecho') {
             this.taskDone.push(tk);
           }
         });
@@ -130,13 +130,13 @@ export class ListTaskComponent implements OnInit {
       next: (v) => {
         this.taskData = v.taskList;
         this.taskData.forEach((tk: any) => {
-          if (tk.taskStatus === 'to-do') {
+          if (tk.taskStatus === 'por hacer') {
             this.taskTodo.push(tk);
           }
-          if (tk.taskStatus === 'in-progress') {
+          if (tk.taskStatus === 'en progreso') {
             this.taskInprogress.push(tk);
           }
-          if (tk.taskStatus === 'done') {
+          if (tk.taskStatus === 'hecho') {
             this.taskDone.push(tk);
           }
         });
@@ -151,18 +151,18 @@ export class ListTaskComponent implements OnInit {
 
   dropUpdate() {
     this.taskTodo.forEach((tk: any) => {
-      if (tk.taskStatus !== 'to-do') {
-        this.updateTask(tk, 'to-do');
+      if (tk.taskStatus !== 'por hacer') {
+        this.updateTask(tk, 'por hacer');
       }
     });
     this.taskInprogress.forEach((tk: any) => {
-      if (tk.taskStatus !== 'in-progress') {
-        this.updateTask(tk, 'in-progress');
+      if (tk.taskStatus !== 'en progreso') {
+        this.updateTask(tk, 'en progreso');
       }
     });
     this.taskDone.forEach((tk: any) => {
-      if (tk.taskStatus !== 'done') {
-        this.updateTask(tk, 'done');
+      if (tk.taskStatus !== 'hecho') {
+        this.updateTask(tk, 'hecho');
       }
     });
   }

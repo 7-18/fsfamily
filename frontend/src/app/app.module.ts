@@ -52,7 +52,12 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { ListDreamComponent } from './dream/list-dream/list-dream.component';
 import { SaveDreamComponent } from './dream/save-dream/save-dream.component';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin
+]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +104,8 @@ import { SaveDreamComponent } from './dream/save-dream/save-dream.component';
     DragDropModule,
     MatSidenavModule,
     MatDividerModule,
-    MatCarouselModule
+    MatCarouselModule,
+    FullCalendarModule
   ],
   providers: [
     UserService,

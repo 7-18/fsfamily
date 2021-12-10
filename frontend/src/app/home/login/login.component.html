@@ -40,27 +40,38 @@
         <mat-card-content>
           <div class="container">
             <mat-form-field>
+              <mat-label>Correo electrónico</mat-label>
               <input
                 [(ngModel)]="loginData.email"
                 type="email"
                 matInput
-                placeholder="Correo electrónico"
+                placeholder="ejemplo@gmail.com"
                 required
+                (keyup.enter)="login()"
               />
             </mat-form-field>
             <mat-form-field>
+              <mat-label>Contraseña</mat-label>
               <input
                 [(ngModel)]="loginData.password"
                 type="password"
                 matInput
-                placeholder="Contraseña"
                 required
+                (keyup.enter)="login()"
+                [type]="hide ? 'password' : 'text'"
               />
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-hint *ngIf="!loginData.password">Ingrese su contraseña</mat-hint>
             </mat-form-field>
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button (click)="login()" class="button" mat-raised-button>
+          <button
+            (click)="login()"
+            class="button"
+            mat-raised-button
+            [disabled]="!loginData.email || !loginData.password"
+          >
             Ingresar
           </button>
         </mat-card-actions>

@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="example-container col">
-        <h2 class="text-center">Para hacer</h2>
+        <h2 class="text-center today">Por hacer</h2>
 
         <div
           cdkDropList
@@ -34,21 +34,21 @@
                         <span class="spacer"></span>
                         <button
                           class="btnDone"
-                          *ngIf="item.taskStatus == 'done'"
+                          *ngIf="item.taskStatus == 'hecho'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.taskStatus == 'in-progress'"
+                          *ngIf="item.taskStatus == 'en progreso'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.taskStatus == 'to-do'"
+                          *ngIf="item.taskStatus == 'por hacer'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
@@ -68,21 +68,21 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateTask(item, 'to-do')"
+                        (click)="updateTask(item, 'por hacer')"
                       >
-                        to-do
+                        por hacer
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateTask(item, 'in-progress')"
+                        (click)="updateTask(item, 'en progreso')"
                       >
-                        In-progress
+                        en progreso
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateTask(item, 'done')"
+                        (click)="updateTask(item, 'hecho')"
                       >
                         done
                       </button>
@@ -100,7 +100,7 @@
       </div>
 
       <div class="example-container col">
-        <h2 class="text-center">En progreso</h2>
+        <h2 class="text-center today">En progreso</h2>
 
         <div
           cdkDropList
@@ -126,21 +126,21 @@
                         <span class="spacer"></span>
                         <button
                           class="btnDone"
-                          *ngIf="item.taskStatus == 'done'"
+                          *ngIf="item.taskStatus == 'hecho'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.taskStatus == 'in-progress'"
+                          *ngIf="item.taskStatus == 'en progreso'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.taskStatus == 'to-do'"
+                          *ngIf="item.taskStatus == 'por hacer'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
@@ -160,21 +160,21 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateTask(item, 'to-do')"
+                        (click)="updateTask(item, 'por hacer')"
                       >
-                        to-do
+                        por hacer
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateTask(item, 'in-progress')"
+                        (click)="updateTask(item, 'en progreso')"
                       >
-                        In-progress
+                        en progreso
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateTask(item, 'done')"
+                        (click)="updateTask(item, 'hecho')"
                       >
                         done
                       </button>
@@ -192,7 +192,7 @@
       </div>
 
       <div class="example-container col">
-        <h2 class="text-center">Hecho</h2>
+        <h2 class="text-center today">Hecho</h2>
 
         <div
           cdkDropList
@@ -219,21 +219,21 @@
 
                         <button
                           class="btnDone"
-                          *ngIf="item.taskStatus == 'done'"
+                          *ngIf="item.taskStatus == 'hecho'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.taskStatus == 'in-progress'"
+                          *ngIf="item.taskStatus == 'en progreso'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.taskStatus == 'to-do'"
+                          *ngIf="item.taskStatus == 'por hacer'"
                           mat-raised-button
                         >
                           {{ item.taskStatus }}
@@ -253,21 +253,21 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateTask(item, 'to-do')"
+                        (click)="updateTask(item, 'por hacer')"
                       >
-                        to-do
+                        por hacer
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateTask(item, 'in-progress')"
+                        (click)="updateTask(item, 'en progreso')"
                       >
-                        In-progress
+                        en progreso
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateTask(item, 'done')"
+                        (click)="updateTask(item, 'hecho')"
                       >
                         done
                       </button>

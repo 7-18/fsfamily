@@ -10,11 +10,11 @@
   <div class="container">
     <div class="row">
       <div class="example-container col">
-        <h2 class="text-center">Corto plazo</h2>
+        <h2 class="text-center today">Corto plazo</h2>
 
         <div
           cdkDropList
-          #todoList="cdkDropList"
+          #dreamList="cdkDropList"
           [cdkDropListData]="DreamTodo"
           [cdkDropListConnectedTo]="[inprogressList, doneList]"
           class="example-list"
@@ -36,21 +36,21 @@
                         <span class="spacer"></span>
                         <button
                           class="btnDone"
-                          *ngIf="item.DreamStatus == 'done'"
+                          *ngIf="item.DreamStatus == 'largo'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.DreamStatus == 'in-progress'"
+                          *ngIf="item.DreamStatus == 'mediano'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.DreamStatus == 'to-do'"
+                          *ngIf="item.DreamStatus == 'corto'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
@@ -70,21 +70,21 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateDream(item, 'to-do')"
+                        (click)="updateDream(item, 'corto')"
                       >
                         corto
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateDream(item, 'in-progress')"
+                        (click)="updateDream(item, 'mediano')"
                       >
                         mediano
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateDream(item, 'done')"
+                        (click)="updateDream(item, 'largo')"
                       >
                         largo
                       </button>
@@ -102,13 +102,13 @@
       </div>
 
       <div class="example-container col">
-        <h2 class="text-center">Mediano plazo</h2>
+        <h2 class="text-center today">Mediano plazo</h2>
 
         <div
           cdkDropList
           #inprogressList="cdkDropList"
           [cdkDropListData]="DreamInprogress"
-          [cdkDropListConnectedTo]="[todoList, doneList]"
+          [cdkDropListConnectedTo]="[dreamList, doneList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
@@ -128,21 +128,21 @@
                         <span class="spacer"></span>
                         <button
                           class="btnDone"
-                          *ngIf="item.DreamStatus == 'done'"
+                          *ngIf="item.DreamStatus == 'largo'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.DreamStatus == 'in-progress'"
+                          *ngIf="item.DreamStatus == 'mediano'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.DreamStatus == 'to-do'"
+                          *ngIf="item.DreamStatus == 'corto'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
@@ -162,23 +162,23 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateDream(item, 'to-do')"
+                        (click)="updateDream(item, 'corto')"
                       >
-                        to-do
+                        corto
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateDream(item, 'in-progress')"
+                        (click)="updateDream(item, 'mediano')"
                       >
-                        In-progress
+                        mediano
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateDream(item, 'done')"
+                        (click)="updateDream(item, 'largo')"
                       >
-                        done
+                        largo
                       </button>
                       <span class="spacer"></span>
                     </mat-action-row>
@@ -194,13 +194,13 @@
       </div>
 
       <div class="example-container col">
-        <h2 class="text-center">Largo plazo</h2>
+        <h2 class="text-center today">Largo plazo</h2>
 
         <div
           cdkDropList
           #doneList="cdkDropList"
           [cdkDropListData]="DreamDone"
-          [cdkDropListConnectedTo]="[todoList, inprogressList]"
+          [cdkDropListConnectedTo]="[dreamList, inprogressList]"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
@@ -223,21 +223,21 @@
 
                         <button
                           class="btnDone"
-                          *ngIf="item.DreamStatus == 'done'"
+                          *ngIf="item.DreamStatus == 'largo'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnInProgress"
-                          *ngIf="item.DreamStatus == 'in-progress'"
+                          *ngIf="item.DreamStatus == 'mediano'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
                         </button>
                         <button
                           class="btnToDo"
-                          *ngIf="item.DreamStatus == 'to-do'"
+                          *ngIf="item.DreamStatus == 'corto'"
                           mat-raised-button
                         >
                           {{ item.DreamStatus }}
@@ -257,21 +257,21 @@
                       <button
                         class="btnSelectTodo"
                         mat-button
-                        (click)="updateDream(item, 'to-do')"
+                        (click)="updateDream(item, 'corto')"
                       >
-                        to-do
+                        corto
                       </button>
                       <button
                         class="btnSelectInProgress"
                         mat-button
-                        (click)="updateDream(item, 'in-progress')"
+                        (click)="updateDream(item, 'mediano')"
                       >
-                        In-progress
+                        mediano
                       </button>
                       <button
                         class="btnSelectDone"
                         mat-button
-                        (click)="updateDream(item, 'done')"
+                        (click)="updateDream(item, 'corto')"
                       >
                         done
                       </button>

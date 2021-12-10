@@ -10,7 +10,7 @@ a.navbar-brand:hover {
   background-color: transparent;
 }
 
-button.navbar-toggler:hover{
+button.navbar-toggler:hover {
   background-color: transparent;
 }
 
@@ -101,12 +101,11 @@ div.toggler-principal .navbar-toggler {
   .admin {
     display: initial;
   }
-  
+
   .navbar {
     padding-right: 0%;
     flex-wrap: nowrap;
   }
-
 }
 
 mat-sidenav {
@@ -152,18 +151,31 @@ mat-divider {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-mat-accordion, mat-expansion-panel, mat-expansion-panel-header, mat-panel-title, mat-panel-description {
-  background-color: transparent!important;
+mat-accordion,
+mat-expansion-panel,
+mat-expansion-panel-header,
+mat-panel-title,
+mat-panel-description {
+  background-color: transparent !important;
   border: transparent;
   padding: 0;
   margin: 0;
-  color: #fff!important;
+  color: #fff !important;
 }
 
 ::ng-deep .change-accordion > .mat-expansion-indicator:after {
   color: white;
 }
 
-::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+::ng-deep .mat-expansion-panel:not([class*="mat-elevation-z"]) {
   box-shadow: none;
+}
+
+.icn {
+  font-size: 20px;
+  margin-left: 2px;
+}
+
+.icn-2 {
+  font-size: 20px;
 }

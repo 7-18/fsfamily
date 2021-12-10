@@ -10,8 +10,8 @@
 }
 
 .card {
-  min-width: 150px;
-  max-width: 500px;
+  min-width: 280px;
+  max-width: 700px;
   width: 100%;
 }
 
@@ -30,7 +30,7 @@
 
 mat-card-title {
   text-align: center;
-	font-size: 300%;
+	font-size: 250%;
 	font-weight: 200;
 	color: #002b5c;
 	-webkit-text-rendering: optimizeLegibility;
@@ -50,3 +50,11 @@ p a {
   color: #ed7b32;
   
   }
+  
+button[disabled] {
+  cursor: not-allowed;
+}
+
+button[disabled]:hover {
+  background-color: #dddddd;
+}

@@ -50,30 +50,18 @@ export class ListDreamComponent implements OnInit {
     this.today = moment().locale('es').format('dddd MMM D');
   }
 
-  ngAfterViewInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-      }
-    });
-  }
-
   ngOnInit(): void {
     this._dreamService.listDream().subscribe({
       next: (v) => {
         this.DreamData = v.DreamList;
         this.DreamData.forEach((tk: any) => {
-          if (tk.DreamStatus === 'to-do') {
+          if (tk.DreamStatus === 'corto') {
             this.DreamTodo.push(tk);
           }
-          if (tk.DreamStatus === 'in-progress') {
+          if (tk.DreamStatus === 'mediano') {
             this.DreamInprogress.push(tk);
           }
-          if (tk.DreamStatus === 'done') {
+          if (tk.DreamStatus === 'largo') {
             this.DreamDone.push(tk);
           }
         });
@@ -130,13 +118,13 @@ export class ListDreamComponent implements OnInit {
       next: (v) => {
         this.DreamData = v.DreamList;
         this.DreamData.forEach((tk: any) => {
-          if (tk.DreamStatus === 'to-do') {
+          if (tk.DreamStatus === 'corto') {
             this.DreamTodo.push(tk);
           }
-          if (tk.DreamStatus === 'in-progress') {
+          if (tk.DreamStatus === 'mediano') {
             this.DreamInprogress.push(tk);
           }
-          if (tk.DreamStatus === 'done') {
+          if (tk.DreamStatus === 'largo') {
             this.DreamDone.push(tk);
           }
         });
@@ -151,18 +139,18 @@ export class ListDreamComponent implements OnInit {
 
   dropUpdate() {
     this.DreamTodo.forEach((tk: any) => {
-      if (tk.DreamStatus !== 'to-do') {
-        this.updateDream(tk, 'to-do');
+      if (tk.DreamStatus !== 'corto') {
+        this.updateDream(tk, 'corto');
       }
     });
     this.DreamInprogress.forEach((tk: any) => {
-      if (tk.DreamStatus !== 'in-progress') {
-        this.updateDream(tk, 'in-progress');
+      if (tk.DreamStatus !== 'mediano') {
+        this.updateDream(tk, 'mediano');
       }
     });
     this.DreamDone.forEach((tk: any) => {
-      if (tk.DreamStatus !== 'done') {
-        this.updateDream(tk, 'done');
+      if (tk.DreamStatus !== 'largo') {
+        this.updateDream(tk, 'largo');
       }
     });
   }
