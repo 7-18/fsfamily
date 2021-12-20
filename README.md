@@ -1,4 +1,3 @@
 # fsfamily
-## MEAN Stack (MongoDB, ExpressJS, Angular, NodeJS)
-### API RESTful
+#### MEAN Stack (MongoDB, ExpressJS, Angular, NodeJS)
 #### HTML + CSS + Bootstrap + TypeScript + JavaScript
